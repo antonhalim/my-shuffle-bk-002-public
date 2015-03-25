@@ -1,14 +1,13 @@
 class Array
 
 	def my_shuffle
-		result = []
 		count = self.length
+		result ||= [self.last]
+		return self if count <= 1
 		until result.length == count
 			unit = self.sample
-			if !result.include?(unit) && result.length != self.index(unit)
+			if result.include?(unit) == false && result.length != self.index(unit)
 				result << unit
-			elsif count == 1
-				return self
 			end
 		end
 		result
